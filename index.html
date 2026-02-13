@@ -22,16 +22,16 @@
 
     /* Light Mode Colors */
     [data-theme="light"] {
-        --bg-body: #ffffff;
-        --bg-section-alt: #f8fafc;
+        --bg-body: #fbfbfd;
+        --bg-section-alt: #f5f5f7;
         --bg-card: #ffffff;
-        --bg-card-hover: #f1f5f9;
-        --accent: #6366f1;
-        --accent-hover: #4f46e5;
-        --text-main: #1e293b;
-        --text-muted: #64748b;
-        --border: #e2e8f0;
-        --timeline-line: #cbd5e1;
+        --bg-card-hover: #fafafa;
+        --accent: #0171E3;
+        --accent-hover: #0051d5;
+        --text-main: #1d1d1f;
+        --text-muted: #86868b;
+        --border: #d2d2d7;
+        --timeline-line: #d2d2d7;
     }
 
     /* Theme Toggle Button */
@@ -115,12 +115,27 @@
         box-shadow: 0 25px 50px rgba(99, 102, 241, 0.2);
     }
 
+    /* Light mode specific shadow adjustments */
+    [data-theme="light"] .info-card,
+    [data-theme="light"] .skill-card,
+    [data-theme="light"] .certificate-card,
+    [data-theme="light"] .timeline-content,
+    [data-theme="light"] .edu-card,
+    [data-theme="light"] .contact-info-box,
+    [data-theme="light"] .contact-form {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
     [data-theme="light"] .info-card:hover,
     [data-theme="light"] .skill-card:hover,
     [data-theme="light"] .certificate-card:hover,
     [data-theme="light"] .timeline-content:hover,
     [data-theme="light"] .edu-card:hover {
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    [data-theme="light"] .progress-bg {
+        background-color: #e8e8ed;
     }
 
     /* Light mode scrollbar */
@@ -866,8 +881,32 @@
     /* --- Education & Languages --- */
     .edu-lang-grid {
         display: grid;
-        grid-template-columns: 1.5fr 1fr;
-        gap: 2.5rem; /* Balanced gap */
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .education-column {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .languages-column {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    @media (min-width: 992px) {
+        .edu-lang-grid {
+            grid-template-columns: 1.5fr 1fr;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .edu-lang-grid {
+            grid-template-columns: 1fr;
+        }
     }
 
     .edu-card {
@@ -1083,6 +1122,11 @@
         box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
     }
 
+    /* Textarea resize control */
+    .form-control[rows] {
+        resize: vertical;
+    }
+
     /* --- Footer --- */
     footer {
         background-color: var(--bg-section-alt);
@@ -1097,7 +1141,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 1.8rem; /* Balanced gap */
+        gap: 1.8rem;
         padding: 0 2rem;
     }
 
@@ -1119,7 +1163,9 @@
 
     .footer-links {
         display: flex;
-        gap: 1.5rem; /* Balanced gap */
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
     .footer-link {
@@ -1146,8 +1192,10 @@
 
     .footer-copyright {
         color: var(--text-muted);
-        font-size: 0.9rem; /* Balanced copyright text */
+        font-size: 0.9rem;
         margin-top: 1rem;
+        text-align: center;
+        width: 100%;
     }
 
     /* Mobile Responsive */
@@ -1221,6 +1269,36 @@
         .avatar-placeholder {
             width: 280px;
             height: 280px;
+        }
+
+        .edu-lang-grid {
+            grid-template-columns: 1fr;
+        }    
+    }
+
+    @media (min-width: 768px) {
+        .edu-lang-grid {
+            grid-template-columns: 1.5fr 1fr;
+        }
+
+        .footer-content {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .footer-info {
+            text-align: left;
+        }
+        
+        .footer-links {
+            justify-content: flex-end;
+        }
+        
+        .footer-copyright {
+            width: 100%;
+            order: 3;
         }
     }
 
@@ -1524,63 +1602,64 @@
   </section>
 
   <!-- Education & Languages -->
-  <section id="education">
-      <div class="section-content">
-          <h2 class="section-title fade-in">Education</h2>
-          <div class="edu-lang-grid">
-              
-              <!-- Education Column -->
-              <div>
-                  <div class="edu-card fade-in">
-                      <div class="edu-icon">
-                          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
-                      </div>
-                      <div>
-                          <h3 style="color:var(--text-main); margin-bottom:0.3rem;">Hong Kong University of Science and Technology</h3>
-                          <p style="color:var(--accent); margin-bottom:0.8rem; font-weight:600;">Bachelor of Engineering in Computer Science</p>
-                          <p style="color:var(--text-muted); font-size:1rem;">Expected: Sep 2025 - June 2027</p>
-                          <p style="color:var(--text-muted); font-size:1rem; margin-top:0.8rem; line-height:1.6;">
-                          </p>
-                      </div>
-                  </div>
-              </div>
-              <div>
-                  <div class="edu-card fade-in">
-                      <div class="edu-icon">
-                          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
-                      </div>
-                      <div>
-                          <h3 style="color:var(--text-main); margin-bottom:0.3rem;">Hong Kong Institute of Vocational Education</h3>
-                          <p style="color:var(--accent); margin-bottom:0.8rem; font-weight:600;">Higher Diploma in Software Engineering</p>
-                          <p style="color:var(--text-muted); font-size:1rem;">Graduated: June 2025</p>
-                          <p style="color:var(--text-muted); font-size:1rem; margin-top:0.8rem; line-height:1.6;">
-                              <strong>Relevant Coursework:</strong> Operating Systems, Computer Networks, Database Management Systems, Software Engineering, Data Structures & Algorithms.
-                          </p>
-                      </div>
-                  </div>
-              </div>
+    <section id="education">
+        <div class="section-content">
+            <h2 class="section-title fade-in">Education</h2>
+            <div class="edu-lang-grid">
+                
+                <!-- Education Column (Left) -->
+                <div class="education-column">
+                    <div class="edu-card fade-in">
+                        <div class="edu-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+                        </div>
+                        <div>
+                            <h3 style="color:var(--text-main); margin-bottom:0.3rem;">Hong Kong University of Science and Technology</h3>
+                            <p style="color:var(--accent); margin-bottom:0.8rem; font-weight:600;">Bachelor of Engineering in Computer Science</p>
+                            <p style="color:var(--text-muted); font-size:1rem;">Expected: Sep 2025 - June 2027</p>
+                            <p style="color:var(--text-muted); font-size:1rem; margin-top:0.8rem; line-height:1.6;">
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="edu-card fade-in">
+                        <div class="edu-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+                        </div>
+                        <div>
+                            <h3 style="color:var(--text-main); margin-bottom:0.3rem;">Hong Kong Institute of Vocational Education</h3>
+                            <p style="color:var(--accent); margin-bottom:0.8rem; font-weight:600;">Higher Diploma in Software Engineering</p>
+                            <p style="color:var(--text-muted); font-size:1rem;">Graduated: June 2025</p>
+                            <p style="color:var(--text-muted); font-size:1rem; margin-top:0.8rem; line-height:1.6;">
+                                <strong>Relevant Coursework:</strong> Operating Systems, Computer Networks, Database Management Systems, Software Engineering, Data Structures & Algorithms.
+                            </p>
+                        </div>
+                    </div>
+                </div>
 
-              <!-- Languages Column -->
-              <div class="skill-card fade-in" style="height: fit-content;">
-                  <h4 style="color:var(--text-main); margin-bottom:2rem; font-size:1.3rem;">Languages</h4>
-                  
-                  <div class="skill-bar-container">
-                      <div class="skill-info"><span class="skill-name">English</span><span class="skill-level">Professional Working</span></div>
-                      <div class="progress-bg"><div class="progress-fill" style="width: 90%"></div></div>
-                  </div>
-                  <div class="skill-bar-container">
-                      <div class="skill-info"><span class="skill-name">Cantonese</span><span class="skill-level">Native Speaker</span></div>
-                      <div class="progress-bg"><div class="progress-fill" style="width: 100%"></div></div>
-                  </div>
-                  <div class="skill-bar-container">
-                      <div class="skill-info"><span class="skill-name">Putonghua (Mandarin)</span><span class="skill-level">Advanced Working</span></div>
-                      <div class="progress-bg"><div class="progress-fill" style="width: 85%"></div></div>
-                  </div>
-              </div>
+                <!-- Languages Column (Right) -->
+                <div class="languages-column">
+                    <div class="skill-card fade-in" style="height: fit-content;">
+                        <h4 style="color:var(--text-main); margin-bottom:2rem; font-size:1.3rem;">Languages</h4>
+                        
+                        <div class="skill-bar-container">
+                            <div class="skill-info"><span class="skill-name">English</span><span class="skill-level">Professional Working</span></div>
+                            <div class="progress-bg"><div class="progress-fill" style="width: 90%"></div></div>
+                        </div>
+                        <div class="skill-bar-container">
+                            <div class="skill-info"><span class="skill-name">Cantonese</span><span class="skill-level">Native Speaker</span></div>
+                            <div class="progress-bg"><div class="progress-fill" style="width: 100%"></div></div>
+                        </div>
+                        <div class="skill-bar-container">
+                            <div class="skill-info"><span class="skill-name">Putonghua</span><span class="skill-level">Advanced Working</span></div>
+                            <div class="progress-bg"><div class="progress-fill" style="width: 85%"></div></div>
+                        </div>
+                    </div>
+                </div>
 
-          </div>
-      </div>
-  </section>
+            </div>
+        </div>
+    </section>
 
   <!-- Certificates Section -->
   <section id="certificates">
@@ -1606,59 +1685,76 @@
   </section>
 
   <!-- Contact Section -->
-  <section id="contact">
-      <div class="section-content">
-          <h2 class="section-title fade-in">Get In Touch</h2>
-          <div class="contact-grid">
-              
-              <div class="contact-info-box fade-in">
-                  <h3 style="color:var(--text-main); margin-bottom:2.5rem;">Contact Information</h3>
-                  
-                  <div class="contact-item">
-                      <span class="contact-label">Tse Tsz Kin (Ken)</span>
-                  </div>
-                  <div class="contact-item">
-                      <span class="contact-label">📍 Location</span>
-                      <span class="contact-value">Eastern District, Hong Kong</span>
-                  </div>
-                  <div class="contact-item">
-                      <span class="contact-label">📧 Email</span>
-                      <a href="mailto:tsetszkinken@gmail.com" class="contact-value" style="color:var(--accent);">tsetszkinken@gmail.com</a>
-                  </div>
-                  <div class="contact-item">
-                      <span class="contact-label">📱 Phone</span>
-                      <span class="contact-value">+852 9524 3161</span>
-                  </div>
-              </div>
+    <section id="contact">
+        <div class="section-content">
+            <h2 class="section-title fade-in">Get In Touch</h2>
+            <div class="contact-grid">
+                
+                <div class="contact-info-box fade-in">
+                    <h3 style="color:var(--text-main); margin-bottom:2.5rem;">Contact Information</h3>
+                    
+                    <div class="contact-item">
+                        <span class="contact-label">Tse Tsz Kin (Ken)</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block; vertical-align:middle; margin-right:8px;">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            Location
+                        </span>
+                        <span class="contact-value">Eastern District, Hong Kong</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block; vertical-align:middle; margin-right:8px;">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            Email
+                        </span>
+                        <a href="mailto:tsetszkinken@gmail.com" class="contact-value" style="color:var(--accent);">tsetszkinken@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block; vertical-align:middle; margin-right:8px;">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                            Phone
+                        </span>
+                        <span class="contact-value">+852 9524 3161</span>
+                    </div>
+                </div>
 
-              <div class="contact-form fade-in">
-                  <h3 style="color:var(--text-main); margin-bottom:2.5rem;">Send Me a Message</h3>
-                  <form>
-                      <div class="form-group">
-                          <label class="contact-label">Full Name</label>
-                          <input type="text" class="form-control" placeholder="Enter your full name">
-                      </div>
-                      <div class="form-group">
-                          <label class="contact-label">Email Address</label>
-                          <input type="email" class="form-control" placeholder="Enter your email address">
-                      </div>
-                      <div class="form-group">
-                          <label class="contact-label">Subject</label>
-                          <input type="text" class="form-control" placeholder="What's this about?">
-                      </div>
-                      <div class="form-group">
-                          <label class="contact-label">Message</label>
-                          <textarea rows="6" class="form-control" placeholder="Tell me about your project or inquiry..."></textarea>
-                      </div>
-                      <button type="submit" class="btn btn-primary" style="width:100%; border:none; cursor:pointer;">Send Message</button>
-                  </form>
-              </div>
+                <div class="contact-form fade-in">
+                    <h3 style="color:var(--text-main); margin-bottom:2.5rem;">Send Me a Message</h3>
+                    <form>
+                        <div class="form-group">
+                            <label class="contact-label">Full Name</label>
+                            <input type="text" class="form-control" placeholder="Enter your full name">
+                        </div>
+                        <div class="form-group">
+                            <label class="contact-label">Email Address</label>
+                            <input type="email" class="form-control" placeholder="Enter your email address">
+                        </div>
+                        <div class="form-group">
+                            <label class="contact-label">Subject</label>
+                            <input type="text" class="form-control" placeholder="What's this about?">
+                        </div>
+                        <div class="form-group">
+                            <label class="contact-label">Message</label>
+                            <textarea rows="6" class="form-control" placeholder="Tell me about your project or inquiry..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width:100%; border:none; cursor:pointer;">Send Message</button>
+                    </form>
+                </div>
 
-          </div>
-      </div>
-  </section>
+            </div>
+        </div>
+    </section>
 
-      <!-- Footer -->
+    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-info">
@@ -1667,6 +1763,13 @@
             </div>
             
             <div class="footer-links">
+                <!-- Email -->
+                <a href="mailto:tsetszkinken@gmail.com" class="footer-link" title="Email">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                </a>
                 <!-- LinkedIn 
                 <a href="https://linkedin.com/in/yourprofile" class="footer-link" target="_blank" title="LinkedIn Profile">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
@@ -1680,14 +1783,6 @@
                         <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                     </svg>
                 </a>-->
-                
-                <!-- Email -->
-                <a href="mailto:your.email@example.com" class="footer-link" title="Email">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                        <polyline points="22,6 12,13 2,6"></polyline>
-                    </svg>
-                </a>
                 
                 <!-- Twitter/X 
                 <a href="https://twitter.com/yourusername" class="footer-link" target="_blank" title="Twitter">
