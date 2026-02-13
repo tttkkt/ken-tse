@@ -1870,7 +1870,7 @@
                     backToTopBtn.classList.remove('visible');
                 }
 
-                // Update active navigation link with better detection
+                // Update active navigation link and URL hash
                 let current = '';
                 sections.forEach(section => {
                     const sectionTop = section.offsetTop - 150;
@@ -1880,12 +1880,18 @@
                     }
                 });
 
+                // Update navigation active state
                 navLinks.forEach(link => {
                     link.classList.remove('active');
                     if (link.getAttribute('href').substring(1) === current) {
                         link.classList.add('active');
                     }
                 });
+
+                // Update URL hash
+                if (current && window.location.hash !== '#' + current) {
+                    history.replaceState(null, null, '#' + current);
+                }
 
                 // Fade-in animations for elements
                 const fadeElements = document.querySelectorAll('.fade-in');
@@ -2082,6 +2088,65 @@
                 themeToggle.style.transform = 'translateY(-50%) rotate(180deg)';
             }
         }
+
+        // Update URL hash on scroll without jumping
+        function updateURLHash() {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 150;
+                const sectionHeight = section.clientHeight;
+                const scrollY = window.pageYOffset;
+                
+                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            if (current && window.location.hash !== '#' + current) {
+                // Use replaceState instead of pushState to avoid browser history
+                history.replaceState(null, null, '#' + current);
+            }
+        }
+
+        // Throttle function to limit how often updateURLHash runs
+        function throttle(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // Add to the existing scroll event listener
+        const throttledUpdateURL = throttle(updateURLHash, 300);
+
+        window.addEventListener('scroll', function() {
+            requestTick();
+            throttledUpdateURL(); // Add this line
+        });
+
+        // Handle initial page load with hash
+        window.addEventListener('load', function() {
+            if (window.location.hash) {
+                setTimeout(() => {
+                    const targetId = window.location.hash.substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    if (targetSection) {
+                        const offsetTop = targetSection.offsetTop - 80;
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                }, 100);
+            }
+        });
     </script>
 
 </body>
