@@ -1276,6 +1276,122 @@
         }    
     }
 
+    /* --- Projects Showcases Section --- */
+    .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2.5rem;
+    }
+
+    .project-card {
+        background-color: var(--bg-card);
+        border-radius: 15px;
+        border: 1px solid var(--border);
+        overflow: hidden;
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .project-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, var(--accent), var(--accent-hover));
+    }
+
+    .project-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        border-color: var(--accent);
+    }
+
+    .project-image {
+        height: 220px;
+        background: linear-gradient(135deg, var(--bg-section-alt), var(--border));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-bottom: 1px solid var(--border);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .project-image svg {
+        width: 80px;
+        height: 80px;
+        color: var(--accent);
+        opacity: 0.8;
+        transition: transform 0.3s ease;
+    }
+
+    .project-card:hover .project-image svg {
+        transform: scale(1.1);
+    }
+
+    .project-content {
+        padding: 2rem;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .project-content h3 {
+        color: var(--text-main);
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+    }
+
+    .project-content p {
+        color: var(--text-muted);
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+        flex-grow: 1;
+    }
+
+    .project-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .project-tags span {
+        background-color: rgba(99, 102, 241, 0.1);
+        color: var(--accent);
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
+
+    .project-links {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .btn-sm {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.85rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+    }
+
+    /* Light mode adjustments for project cards */
+    [data-theme="light"] .project-card {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    [data-theme="light"] .project-card:hover {
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    }
+
     @media (min-width: 768px) {
         .edu-lang-grid {
             grid-template-columns: 1.5fr 1fr;
@@ -1299,6 +1415,20 @@
         .footer-copyright {
             width: 100%;
             order: 3;
+        }
+
+         .projects-grid {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        
+        .project-links {
+            flex-direction: column;
+        }
+        
+        .btn-sm {
+            width: 100%;
+            justify-content: center;
         }
     }
 
@@ -1359,14 +1489,15 @@
       <div class="nav-container">
           <a href="#home" class="logo" id="logoLink">Ken Tse</a>
           <ul class="nav-links" id="navLinks">
-              <li><a href="#home" class="nav-link">Home</a></li>
-              <li><a href="#about" class="nav-link">About</a></li>
-              <li><a href="#experience" class="nav-link">Experience</a></li>
-              <li><a href="#skills" class="nav-link">Skills</a></li>
-              <li><a href="#education" class="nav-link">Education</a></li>
-              <li><a href="#certificates" class="nav-link">Certificates</a></li>
-              <li><a href="#contact" class="nav-link">Contact</a></li>
-          </ul>
+            <li><a href="#home" class="nav-link">Home</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#experience" class="nav-link">Experience</a></li>
+            <li><a href="#projects" class="nav-link">Projects</a></li>
+            <li><a href="#skills" class="nav-link">Skills</a></li>
+            <li><a href="#education" class="nav-link">Education</a></li>
+            <li><a href="#certificates" class="nav-link">Certificates</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
           <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
       </div>
   </nav>
@@ -1521,6 +1652,224 @@
           </div>
       </div>
   </section>
+
+    <!-- Projects Showcases Section -->
+    <section id="projects">
+        <div class="section-content">
+            <h2 class="section-title fade-in">Project Showcases</h2>
+            <div class="projects-grid">
+                
+                <!-- E-commerce Project -->
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <img src="ecommerce-preview.png" alt="E-commerce Project" class="project-img">
+                    </div>
+                    <div class="project-content">
+                        <h3>E-commerce Order Management System</h3>
+                        <p>A full-stack web application featuring comprehensive order processing, inventory management, and business intelligence visualization. Built with modern web technologies and optimized database design.</p>
+                        <div class="project-tags">
+                            <span>Python Flask</span>
+                            <span>PHP</span>
+                            <span>SQL</span>
+                            <span>Data Visualization</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://tttkkt.github.io/LM-eCommerce/" target="_blank" class="btn btn-primary btn-sm">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                    <polyline points="15 3 21 3 21 9"></polyline>
+                                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg>
+                                Live Demo
+                            </a>
+                            <a href="https://docs.google.com/document/d/1GzeJp_O6GO8NdLNytJGvBEam-7W60QKhmAONMSQUuQM/edit?usp=sharing" target="_blank" class="btn btn-secondary btn-sm">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                                    <line x1="10" y1="9" x2="8" y2="9"></line>
+                                </svg>
+                                Documentation
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Drone Cloud API Project -->
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <img src="drone-preview.png" alt="Drone Project" class="project-img">
+                    </div>
+                    <div class="project-content">
+                        <h3>Drone Inspection Cloud Infrastructure</h3>
+                        <p>Scalable cloud-native system for real-time drone telemetry and automated inspection using computer vision. Features containerized microservices and real-time communication protocols.</p>
+                        <div class="project-tags">
+                            <span>Docker</span>
+                            <span>MQTT</span>
+                            <span>WebSocket</span>
+                            <span>YOLOv11</span>
+                            <span>IoT</span>
+                        </div>
+                        <div class="project-links">
+                            <button class="btn btn-primary btn-sm" onclick="openVideoModal('demo1')">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                                </svg>
+                                Demo Video 1
+                            </button>
+                            <button class="btn btn-primary btn-sm" onclick="openVideoModal('demo2')">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                                </svg>
+                                Demo Video 2
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="video-modal" onclick="closeVideoModal()">
+        <div class="video-modal-content" onclick="event.stopPropagation()">
+            <button class="video-modal-close" onclick="closeVideoModal()">&times;</button>
+            <div id="videoContainer"></div>
+        </div>
+    </div>
+
+    <style>
+    /* Video Modal Styles */
+    .video-modal {
+        display: none;
+        position: fixed;
+        z-index: 10000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.95);
+        animation: fadeIn 0.3s ease;
+    }
+
+    .video-modal.active {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .video-modal-content {
+        position: relative;
+        width: 90%;
+        max-width: 1200px;
+        background-color: var(--bg-card);
+        border-radius: 15px;
+        padding: 2rem;
+        animation: slideUp 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+        from { transform: translateY(50px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+
+    .video-modal-close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: var(--accent);
+        color: white;
+        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        font-size: 1.5rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        z-index: 10001;
+    }
+
+    .video-modal-close:hover {
+        background: var(--accent-hover);
+        transform: rotate(90deg);
+    }
+
+    #videoContainer {
+        width: 100%;
+        padding-top: 56.25%; /* 16:9 Aspect Ratio */
+        position: relative;
+        background: var(--bg-body);
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    #videoContainer iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+        border-radius: 10px;
+    }
+
+    @media (max-width: 768px) {
+        .video-modal-content {
+            width: 95%;
+            padding: 1rem;
+        }
+    }
+    </style>
+
+    <script>
+    // Video Modal Functions
+    const videoLinks = {
+        demo1: 'https://drive.google.com/file/d/1rjc5m7HaI-T2A71PW2T55vtRWHs-N9Lp/preview',
+        demo2: 'https://drive.google.com/file/d/12rq4LEVT5p37ZCQKqkH14qc4IhWGD_Ow/preview'
+    };
+
+    function openVideoModal(videoId) {
+        const modal = document.getElementById('videoModal');
+        const container = document.getElementById('videoContainer');
+        
+        // Create iframe for Google Drive video
+        const iframe = document.createElement('iframe');
+        iframe.src = videoLinks[videoId];
+        iframe.allow = 'autoplay';
+        
+        container.innerHTML = '';
+        container.appendChild(iframe);
+        
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeVideoModal() {
+        const modal = document.getElementById('videoModal');
+        const container = document.getElementById('videoContainer');
+        
+        container.innerHTML = '';
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+
+    // Close modal with ESC key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeVideoModal();
+        }
+    });
+    </script>
 
   <!-- Skills Section -->
   <section id="skills">
