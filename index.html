@@ -1728,6 +1728,29 @@
                     </div>
                 </div>
 
+                <!-- Dynamic Purchase Web -->
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <img src="dynamic-preview1.png" alt="Dynamic Web" class="project-img">
+                    </div>
+                    <div class="project-content">
+                        <h3>Dynamic Web</h3>
+                        <p>Php web demo for motor spare ordering</p>
+                        <div class="project-tags">
+                            <span>Php</span>
+                            <span>MySQL</span>
+                        </div>
+                        <div class="project-links">
+                            <button class="btn btn-primary btn-sm" onclick="openVideoModal('demo3')">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                                </svg>
+                                Demo Video
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -1835,17 +1858,21 @@
     // Video Modal Functions
     const videoLinks = {
         demo1: 'https://drive.google.com/file/d/1rjc5m7HaI-T2A71PW2T55vtRWHs-N9Lp/preview',
-        demo2: 'https://drive.google.com/file/d/12rq4LEVT5p37ZCQKqkH14qc4IhWGD_Ow/preview'
+        demo2: 'https://drive.google.com/file/d/12rq4LEVT5p37ZCQKqkH14qc4IhWGD_Ow/preview',
+        demo3: 'https://www.youtube.com/embed/bVvWO5apGE4'
     };
 
     function openVideoModal(videoId) {
         const modal = document.getElementById('videoModal');
         const container = document.getElementById('videoContainer');
         
-        // Create iframe for Google Drive video
+        // Create iframe for video
         const iframe = document.createElement('iframe');
         iframe.src = videoLinks[videoId];
-        iframe.allow = 'autoplay';
+        
+        // Add these permissions for YouTube to work perfectly
+        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+        iframe.setAttribute('allowfullscreen', ''); // Allows full screen button to work
         
         container.innerHTML = '';
         container.appendChild(iframe);
