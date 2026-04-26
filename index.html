@@ -959,7 +959,7 @@
     }
 
     /* --- Certificates Section --- */
-    .certificates-grid {
+    /*.certificates-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
         gap: 2.5rem;
@@ -973,7 +973,7 @@
         transition: all 0.3s ease;
         position: relative;
         overflow: hidden;
-    }
+    }*/
 
     .certificate-card::before {
         content: '';
@@ -1751,6 +1751,30 @@
                     </div>
                 </div>
 
+                <!-- MVC Warehouse Dashboard -->
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <img src="mvc-preview.png" alt="MVC Dashboard" class="project-img">
+                    </div>
+                    <div class="project-content">
+                        <h3>MVC Warehouse Dashboard</h3>
+                        <p>Warehouse dashboard managing inventory</p>
+                        <div class="project-tags">
+                            <span>JSP</span>
+                            <span>Servlet</span>
+                            <span>MVC model</span>
+                        </div>
+                        <div class="project-links">
+                            <button class="btn btn-primary btn-sm" onclick="openVideoModal('demo4')">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                                </svg>
+                                Demo Video
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -1859,7 +1883,8 @@
     const videoLinks = {
         demo1: 'https://drive.google.com/file/d/1rjc5m7HaI-T2A71PW2T55vtRWHs-N9Lp/preview',
         demo2: 'https://drive.google.com/file/d/12rq4LEVT5p37ZCQKqkH14qc4IhWGD_Ow/preview',
-        demo3: 'https://www.youtube.com/embed/bVvWO5apGE4'
+        demo3: 'https://www.youtube.com/embed/bVvWO5apGE4',
+        demo4: 'https://drive.google.com/file/d/11quV0XrFXrOW6FGGf4W7e52u-ag1T39G/preview'
     };
 
     function openVideoModal(videoId) {
@@ -2038,7 +2063,7 @@
     </section>
 
   <!-- Certificates Section -->
-  <!-- <section id="certificates">
+  <!--<section id="certificates">
       <div class="section-content">
           <h2 class="section-title fade-in">Professional Certifications</h2>
           <div class="certificates-grid">
@@ -2058,7 +2083,7 @@
 
           </div>
       </div>
-  </section> -->
+  </section>-->
 
   <!-- Contact Section -->
     <section id="contact">
